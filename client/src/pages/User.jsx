@@ -13,7 +13,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { useFetch } from '@/hooks/useFetch'
-import { getEvn } from '@/helpers/getEnv'
+import { getEnv } from '@/helpers/getEnv'
 import Loading from '@/components/Loading'
 import { FiEdit } from "react-icons/fi";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -23,13 +23,13 @@ import usericon from '@/assets/images/user.png'
 import moment from 'moment'
 const User = () => {
     const [refreshData, setRefreshData] = useState(false)
-    const { data, loading, error } = useFetch(`${getEvn('VITE_API_BASE_URL')}/user/get-all-user`, {
+    const { data, loading, error } = useFetch(`${getEnv('VITE_API_BASE_URL')}/user/get-all-user`, {
         method: 'get',
         credentials: 'include'
     }, [refreshData])
 
     const handleDelete = async (id) => {
-        const response = await deleteData(`${getEvn('VITE_API_BASE_URL')}/user/delete/${id}`)
+        const response = await deleteData(`${getEnv('VITE_API_BASE_URL')}/user/delete/${id}`)
         if (response) {
             setRefreshData(!refreshData)
             showToast('success', 'Data deleted.')

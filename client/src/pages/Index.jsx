@@ -1,11 +1,11 @@
 import BlogCard from '@/components/BlogCard'
 import Loading from '@/components/Loading'
-import { getEvn } from '@/helpers/getEnv'
+import { getEnv } from '@/helpers/getEnv'
 import { useFetch } from '@/hooks/useFetch'
 import React from 'react'
 
 const Index = () => {
-    const { data: blogData, loading, error } = useFetch(`${getEvn('VITE_API_BASE_URL')}/blog/blogs`, {
+    const { data: blogData, loading, error } = useFetch(`${getEnv('VITE_API_BASE_URL')}/blog/blogs`, {
         method: 'get',
         credentials: 'include'
     })

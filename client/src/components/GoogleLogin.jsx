@@ -5,7 +5,7 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '@/helpers/firebase';
 import { RouteIndex } from '@/helpers/RouteName';
 import { showToast } from '@/helpers/showToast';
-import { getEvn } from '@/helpers/getEnv';
+import { getEnv } from '@/helpers/getEnv';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/redux/user/user.slice';
@@ -34,7 +34,7 @@ const GoogleLogin = () => {
                 avatar: user.photoURL,
                 date_join: user.date_join
             }
-            const response = await fetch(`${getEvn('VITE_API_BASE_URL')}/auth/google-login`, {
+            const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/auth/google-login`, {
                 method: 'post',
                 headers: { 'Content-type': 'application/json' },
                 credentials: 'include',

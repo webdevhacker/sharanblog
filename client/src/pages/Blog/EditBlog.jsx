@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import slugify from 'slugify'
 import { showToast } from '@/helpers/showToast'
-import { getEvn } from '@/helpers/getEnv'
+import { getEnv } from '@/helpers/getEnv'
 import {
     Select,
     SelectContent,
@@ -28,12 +28,12 @@ const EditBlog = () => {
     const { blogid } = useParams()
     const navigate = useNavigate()
     const user = useSelector((state) => state.user)
-    const { data: categoryData } = useFetch(`${getEvn('VITE_API_BASE_URL')}/category/all-category`, {
+    const { data: categoryData } = useFetch(`${getEnv('VITE_API_BASE_URL')}/category/all-category`, {
         method: 'get',
         credentials: 'include'
     })
 
-    const { data: blogData, loading: blogLoading } = useFetch(`${getEvn('VITE_API_BASE_URL')}/blog/edit/${blogid}`, {
+    const { data: blogData, loading: blogLoading } = useFetch(`${getEnv('VITE_API_BASE_URL')}/blog/edit/${blogid}`, {
         method: 'get',
         credentials: 'include'
     }, [blogid])
@@ -96,7 +96,7 @@ const EditBlog = () => {
             formData.append('file', file)
             formData.append('data', JSON.stringify(values))
 
-            const response = await fetch(`${getEvn('VITE_API_BASE_URL')}/blog/update/${blogid}`, {
+            const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/blog/update/${blogid}`, {
                 method: 'put',
                 credentials: 'include',
                 body: formData

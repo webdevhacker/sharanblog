@@ -1,12 +1,12 @@
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 import { initializeApp } from "firebase/app";
-import { getEvn } from "./getEnv";
+import { getEnv } from "./getEnv";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: getEvn('VITE_FIREBASE_API'),
+    apiKey: getEnv('VITE_FIREBASE_API'),
     authDomain: "sharanblog.firebaseapp.com",
     projectId: "sharanblog",
     storageBucket: "sharanblog.firebasestorage.app",

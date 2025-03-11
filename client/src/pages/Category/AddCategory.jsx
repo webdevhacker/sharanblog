@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import slugify from 'slugify'
 import { showToast } from '@/helpers/showToast'
-import { getEvn } from '@/helpers/getEnv'
+import { getEnv } from '@/helpers/getEnv'
 
 const AddCategory = () => {
 
@@ -36,8 +36,8 @@ const AddCategory = () => {
 
     async function onSubmit(values) {
         try {
-            const response = await fetch(`${getEvn('VITE_API_BASE_URL')}/category/add`, {
-                method: 'post',
+            const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/category/add`, {
+                method: 'POST',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(values)
             })
