@@ -20,7 +20,12 @@ import { useState } from 'react'
 import { FiEdit } from "react-icons/fi";
 import { FaRegTrashAlt } from "react-icons/fa";
 import moment from 'moment'
+import { useSelector } from "react-redux";
+import Index from '../Index'
+//import { onlyadmin } from '../middleware/onlyadmin.js'
+
 const BlogDetails = () => {
+    const user = useSelector(state => state.user)
     const [refreshData, setRefreshData] = useState(false)
     const { data: blogData, loading, error } = useFetch(`${getEnv('VITE_API_BASE_URL')}/blog/get-all`, {
         method: 'get',
@@ -41,6 +46,8 @@ const BlogDetails = () => {
     if (loading) return <Loading />
     return (
         <div>
+            {user && user.isLoggedIn && user.user.role === 'admin'
+            ? <>
             <Card>
                 <CardHeader>
                     <div>
@@ -102,6 +109,12 @@ const BlogDetails = () => {
 
                 </CardContent>
             </Card>
+            </>
+            :
+            <>
+            <Index />
+            </>
+        }
         </div>
     )
 }
