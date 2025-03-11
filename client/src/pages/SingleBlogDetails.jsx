@@ -28,7 +28,7 @@ const SingleBlogDetails = () => {
     if (loading) return <Loading />
     return (
         
-        <div className='md:flex-nowrap flex-wrap flex justify-between gap-20'>
+        <div className='md:flex-nowrap flex-wrap flex justify-between gap-20 mt-10'>
             {data && data.blog && user && user.isLoggedIn
                 ?
                 <>
