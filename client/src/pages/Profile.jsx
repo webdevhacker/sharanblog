@@ -103,7 +103,7 @@ const Profile = ( { props }) => {
 
     if (loading) return <Loading />
     return (
-        <Card className="max-w-screen-md mx-auto ">
+        <Card className="max-w-screen-md mx-auto mt-10 md:mt-6 ">
 
             <CardContent>
                 <div className='flex justify-center items-center mt-10' >
