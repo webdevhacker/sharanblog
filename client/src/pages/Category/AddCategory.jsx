@@ -9,9 +9,12 @@ import { Card, CardContent } from '@/components/ui/card'
 import slugify from 'slugify'
 import { showToast } from '@/helpers/showToast'
 import { getEnv } from '@/helpers/getEnv'
+import { useFetch } from '@/hooks/useFetch'
+import { useNavigate } from 'react-router-dom'
+import { RouteAddCategory } from '@/helpers/RouteName'
 
 const AddCategory = () => {
-
+    const navigate = useNavigate()
     const formSchema = z.object({
         name: z.string().min(3, 'Name must be at least 3 character long.'),
         slug: z.string().min(3, 'Slug must be at least 3 character long.'),
@@ -39,6 +42,7 @@ const AddCategory = () => {
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/category/add`, {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
+                credentials: 'include',
                 body: JSON.stringify(values)
             })
             const data = await response.json()
@@ -46,6 +50,7 @@ const AddCategory = () => {
                 return showToast('error', data.message)
             }
             form.reset()
+            navigate(RouteAddCategory)
             showToast('success', data.message)
         } catch (error) {
             showToast('error', error.message)
