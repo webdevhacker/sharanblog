@@ -47,6 +47,7 @@ const EditBlog = () => {
         category: z.string().min(3, 'Category must be at least 3 character long.'),
         title: z.string().min(3, 'Title must be at least 3 character long.'),
         slug: z.string().min(3, 'Slug must be at least 3 character long.'),
+
         blogContent: z.string().min(3, 'Blog content must be at least 3 character long.'),
     })
 
@@ -56,6 +57,7 @@ const EditBlog = () => {
             category: '',
             title: '',
             slug: '',
+            description:'',
             blogContent: '',
         },
     })
@@ -67,6 +69,7 @@ const EditBlog = () => {
             form.setValue('title', blogData.blog.title)
             form.setValue('slug', blogData.blog.title)
             form.setValue('slug', blogData.blog.slug)
+            form.setValue('description', blogData.blog.description)
             form.setValue('blogContent', decode(blogData.blog.blogContent))
         }
     }, [blogData])
@@ -203,7 +206,21 @@ const EditBlog = () => {
                                 </Dropzone>
                             </div>
                             <div className='mb-3'>
-
+                                <FormField
+                                    control={form.control}
+                                    name="description"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Featured Content</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="description" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                            <div className='mb-3'>
                                 <FormField
                                     control={form.control}
                                     name="blogContent"
