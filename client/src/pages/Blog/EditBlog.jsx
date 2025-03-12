@@ -47,7 +47,7 @@ const EditBlog = () => {
         category: z.string().min(3, 'Category must be at least 3 character long.'),
         title: z.string().min(3, 'Title must be at least 3 character long.'),
         slug: z.string().min(3, 'Slug must be at least 3 character long.'),
-
+        description: z.string().max(250, 'Description should be min 250 character word'),
         blogContent: z.string().min(3, 'Blog content must be at least 3 character long.'),
     })
 
