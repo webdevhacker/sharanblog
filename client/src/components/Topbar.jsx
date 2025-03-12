@@ -65,7 +65,7 @@ const Topbar = () => {
                     <AiOutlineMenu />
                 </button>
                 <Link to={RouteIndex}>
-                    <img src={logo} className='md:w-full w-48' />
+                    <img src={logo} className='md:w-full w-[256px]' />
                 </Link>
             </div>
             <div className='w-[500px]'>
