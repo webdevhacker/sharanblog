@@ -14,10 +14,12 @@ import { useDispatch } from 'react-redux'
 import { setUser } from '@/redux/user/user.slice'
 import GoogleLogin from '@/components/GoogleLogin'
 import logo from '@/assets/images/sharanlogo.png'
+import { useSelector } from "react-redux";
+import Index from './Index'
 const SignIn = () => {
-
+    const user = useSelector(state => state.user)
+    
     const dispath = useDispatch()
-
     const navigate = useNavigate()
     const formSchema = z.object({
         email: z.string().email(),
@@ -55,6 +57,16 @@ const SignIn = () => {
 
     return (
         <div className='flex justify-center items-center h-screen w-screen'>
+            {user && user.isLoggedIn
+            ? 
+            <>
+            <Link to={RouteIndex}>
+                        <img src={logo} />
+                        <h4>You have already login to your account. Please click to goto Home.</h4>
+            </Link>
+            </>
+            :
+            <>
             <Card className="w-[400px] p-5">
                 <div className='flex justify-center items-center mb-2'>
 
@@ -114,6 +126,8 @@ const SignIn = () => {
                     </form>
                 </Form> */}
             </Card>
+            </>
+        }
 
         </div>
     )

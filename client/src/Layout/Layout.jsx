@@ -12,7 +12,7 @@ const Layout = () => {
             <Topbar />
             <AppSidebar />
             <main className='w-full bg-[#f5f5f5]'>
-                <div className='w-full min-h-[calc(100vh-45px)] py-28  px-10 mt-12 lg:mt-1'>
+                <div className='w-full min-h-[calc(100vh-45px)] py-28  px-10 mt-1 lg:mt-1'>
                     <Outlet />
                 </div>
                 <Footer />

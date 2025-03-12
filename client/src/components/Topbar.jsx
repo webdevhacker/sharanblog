@@ -59,7 +59,7 @@ const Topbar = () => {
     }
 
     return (
-        <div className='flex justify-between items-center h-16 fixed w-full z-20 bg-white px-5 border-b'>
+        <div className='flex justify-between items-center h-16 fixed w-full z-20 bg-white px-5 border-b shadow-sm'>
             <div className='flex justify-center items-center gap-2'>
                 <button onClick={toggleSidebar} className='md:hidden' type='button'>
                     <AiOutlineMenu />
@@ -69,7 +69,7 @@ const Topbar = () => {
                 </Link>
             </div>
             <div className='w-[500px]'>
-                <div className={`md:relative md:block absolute bg-white left-0 w-full md:top-0 top-16 md:gap-6 md:p-0 p-5 `}>
+                <div className={`md:relative md:block absolute bg-white left-0 w-full md:top-0 top-16 md:gap-6 md:p-0 p-5 ${showSearch ? 'block' : 'hidden'}`}>
                     <SearchBox />
                 </div>
             </div>
@@ -81,9 +81,9 @@ const Topbar = () => {
             </div> */}
             <div className='flex items-center gap-5'>
 
-                {/* <button onClick={toggleSearch} type='button' className='md:hidden block'>
+                <button onClick={toggleSearch} type='button' className='md:hidden block'>
                     <IoMdSearch size={25} />
-                </button> */}
+                </button>
 
                 {!user.isLoggedIn ?
                     <Button asChild className="rounded-full bg-gradient-to-r from-[#00c6ff] to-[#f509d6]">

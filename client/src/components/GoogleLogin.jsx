@@ -32,7 +32,7 @@ const GoogleLogin = () => {
                 name: user.displayName,
                 email: user.email,
                 avatar: user.photoURL,
-                date_join: user.date_join
+                // date_join: user.date_join
             }
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/auth/google-login`, {
                 method: 'post',
