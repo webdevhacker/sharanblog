@@ -15,7 +15,7 @@ const SearchBox = () => {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <Input name="q" onInput={getInput} placeholder="Search here..." className="h-9 rounded-full bg-gray-50" />
+            <Input name="q" onInput={getInput} placeholder="Search..." className="h-9 rounded-full bg-gray-50" />
         </form>
     )
 }
