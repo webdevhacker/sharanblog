@@ -60,12 +60,12 @@ const Topbar = () => {
 
     return (
         <div className='flex justify-between items-center h-16 fixed w-full z-20 bg-white px-5 border-b shadow-sm'>
-            <div className='flex justify-center items-center gap-5 w-full'>
+            <div className='flex justify-center items-center gap-2'>
                 <button onClick={toggleSidebar} className='md:hidden' type='button'>
                     <AiOutlineMenu />
                 </button>
                 <Link to={RouteIndex}>
-                    <img src={logo} className='md:w-full w-[256px]' />
+                    <img src={logo} className='md:w-auto w-48' />
                 </Link>
             </div>
             <div className='w-[500px]'>
@@ -79,7 +79,7 @@ const Topbar = () => {
             <div>
                 <Link to='https://isharankumar.com'>Portfolio</Link>
             </div> */}
-            <div className='flex items-center gap-5'>
+            <div className='flex items-center gap-2'>
 
                 {/* <button onClick={toggleSearch} type='button' className='md:hidden block'>
                     <IoMdSearch size={25} />
