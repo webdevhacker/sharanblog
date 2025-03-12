@@ -9,25 +9,32 @@ import usericon from '@/assets/images/user.png'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { RouteBlogDetails } from '@/helpers/RouteName'
+import { RouteBlogByCategory } from '@/helpers/RouteName'
 const BlogCard = ({ props }) => {
  
     return (
-        <Link to={RouteBlogDetails(props.category.slug, props.slug)}>
+        
             <Card className="pt-5">
             <CardContent>
         <div className="relative mx-auto max-w-full">
         <div className="flex flex-col overflow-hidden">
             <div className="flex-shrink-0">
+            <Link to={RouteBlogDetails(props.category.slug, props.slug)}>
             <img src={props.featuredImage} className='rounded' />
-            {/* <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt=""> */}
+            </Link>
             </div>
             <div className="flex flex-1 flex-col justify-between bg-white p-6">
             <div className="flex-1">
-                <p className="text-sm font-medium text-indigo-600">
+                <Link to={RouteBlogByCategory(props.category.slug)}>
+                <p className="text-sm font-medium text-indigo-600 hover:underline">
                     {props.category.name}
                 </p>
+                </Link>
+                
+                <Link to={RouteBlogDetails(props.category.slug, props.slug)}>
                 <p className="text-xl font-semibold text-gray-900">{props.title}</p>
                 <p className="mt-3 text-base text-gray-500">{props.description}</p>
+                </Link>
             </div>
             <div className="mt-6 flex items-center">
                 <div className="flex-shrink-0">
@@ -50,7 +57,7 @@ const BlogCard = ({ props }) => {
   </div>
             </CardContent>
                         </Card>
-                    </Link>
+                 
 
                     // <div classNameName='my-2'>
                     //     <img src={props.featuredImage} classNameName='rounded' />
