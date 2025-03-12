@@ -28,7 +28,7 @@ const SingleBlogDetails = () => {
     if (loading) return <Loading />
     return (
         
-        <div className='w-full md:flex-nowrap flex-wrap flex justify-between gap-5 mt-10'>
+        <div className='w-full flex-wrap flex justify-between gap-5 mt-10'>
             {data && data.blog && user && user.isLoggedIn
                 ?
                 <>
@@ -40,7 +40,7 @@ const SingleBlogDetails = () => {
                                     <AvatarImage src={data.blog.author.avatar} />
                                 </Avatar>
                                 <div>
-                                    <p className='font-[4px]'>{data.blog.author.name}</p>
+                                    <p className='font-[4px]'>By: {data.blog.author.name}</p>
                                     <p>Published On: {moment(data.blog.createdAt).format('DD-MM-YYYY')}</p>
                                 </div>
                             </div>
@@ -62,9 +62,9 @@ const SingleBlogDetails = () => {
 
 
                     </div>
-                    <div className='border rounded md:w-[30%] w-full p-5 bg-white'>
+                    {/* <div>
                         <RelatedBlog props={{ category: category, currentBlog: blog }} />
-                    </div>
+                    </div> */}
                 </>
                 :
                 <>
