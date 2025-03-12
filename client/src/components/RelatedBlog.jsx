@@ -22,8 +22,8 @@ const RelatedBlog = ({ props }) => {
                         return (
                             <Link key={blog._id} to={RouteBlogDetails(props.category, blog.slug)}>
                                 <div className='flex items-center gap-2 mb-3'>
-                                    <img className='w-[100px] h-[70px] object-cover rounded-md' src={blog.featuredImage} />
-                                    <h4 className='line-clamp-2 text-lg font-semibold'>{blog.title}</h4>
+                                    <img className='w-[100px] h-[70px] object-cover rounded-md shadow-md' src={blog.featuredImage} />
+                                    <h6 className='line-clamp-2 text-lg font-semibold'>{blog.title}</h6>
                                 </div>
                             </Link>
                         )
