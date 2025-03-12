@@ -32,7 +32,7 @@ const SingleBlogDetails = () => {
             {data && data.blog && user && user.isLoggedIn
                 ?
                 <>
-                    <div className='border rounded md:w-[80%] w-full p-5 bg-white'>
+                    <div className='border rounded md:w-full w-full p-5 bg-white'>
                         <h1 className='text-2xl font-bold mb-5'>{data.blog.title}</h1>
                         <div className='flex justify-between items-center'>
                             <div className='flex justify-between items-center gap-5'>
