@@ -19,7 +19,8 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
     origin: process.env.FRONTEND_URL,
-    credentials: true
+    credentials: true,
+    headers: ["Content-Type"],
 }))
 
 
@@ -45,7 +46,7 @@ app.listen(PORT, () => {
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500
-    const message = err.message || 'Internal server error.'
+    const message = err.message || 'Uffs! Something went wrong.'
     res.status(statusCode).json({
         success: false,
         statusCode,

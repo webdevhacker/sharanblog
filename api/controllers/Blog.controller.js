@@ -3,6 +3,7 @@ import { handleError } from "../helpers/handleError.js"
 import Blog from "../models/blog.model.js"
 import { encode } from 'entities'
 import Category from "../models/category.model.js"
+
 export const addBlog = async (req, res, next) => {
     try {
         const data = JSON.parse(req.body.data)
@@ -167,7 +168,7 @@ export const getBlogByCategory = async (req, res, next) => {
             return next(404, 'Category data not found.')
         }
         const categoryId = categoryData._id
-        const blog = await Blog.find({ category: categoryId }).populate('author', 'name avatar role').populate('category', 'name slug').lean().exec()
+        const blog = await Blog.find({ category: categoryId }).populate('author', 'name avatar role').populate('category', 'name slug').sort({ createdAt: -1 }).lean().exec()
         res.status(200).json({
             blog,
             categoryData
