@@ -35,7 +35,8 @@ const SingleBlogDetails = () => {
     <div class="bg-gray-100 py-8">
         <div class="container mx-auto">
             <h1 class="text-4xl font-bold text-gray-800 mb-2">{data.blog.title}</h1>
-            <p class="text-gray-600">Published On: {moment(data.blog.createdAt).format('DD-MM-YYYY')}</p>
+            <p className='text-gray-600'>Author: {data.blog.author.name} | Published On: {moment(data.blog.createdAt).format('DD-MM-YYYY')}</p>
+
         </div>
     </div>
     <div class="py-8">
