@@ -33,14 +33,14 @@ const SingleBlogDetails = () => {
                 ?
                 <>
     <div class="bg-gray-100 py-8">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto">
             <h1 class="text-4xl font-bold text-gray-800 mb-2">{data.blog.title}</h1>
             <p class="text-gray-600">Published On: {moment(data.blog.createdAt).format('DD-MM-YYYY')}</p>
         </div>
     </div>
     <div class="py-8">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row">
-            <div class="w-full md:w-3/4 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row">
+            <div class="w-full md:w-3/4">
                 <img src={data.blog.featuredImage} className='rounded mb-8' />
                 <div class="prose max-w-none">
                     <p dangerouslySetInnerHTML={{ __html: decode(data.blog.blogContent) || '' }}>
