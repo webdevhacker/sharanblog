@@ -28,52 +28,48 @@ const SingleBlogDetails = () => {
     if (loading) return <Loading />
     return (
         
-        <div className='w-full md:flex-nowrap flex-wrap flex justify-between gap-5 mt-10'>
-            {data && data.blog && user && user.isLoggedIn
+        <div class="flex flex-col">
+{data && data.blog && user && user.isLoggedIn
                 ?
                 <>
-                    <div className='border rounded md:w-full w-full p-5 bg-white'>
-                        <h1 className='text-2xl font-bold mb-5'>{data.blog.title}</h1>
-                        <div className='flex justify-between items-center'>
-                            <div className='flex justify-between items-center gap-5'>
-                                <Avatar>
-                                    <AvatarImage src={data.blog.author.avatar} />
-                                </Avatar>
-                                <div>
-                                    <p className='font-[4px]'>Author: {data.blog.author.name}</p>
-                                    <p>Published On: {moment(data.blog.createdAt).format('DD-MM-YYYY')}</p>
-                                </div>
-                            </div>
-                            {/* <div className='flex justify-between items-center gap-5'>
-                                <LikeCount props={{ blogid: data.blog._id }} />
-                                <CommentCount props={{ blogid: data.blog._id }} />
-                            </div> */}
-                        </div>
-                        <div className='my-5'>
-                            <img src={data.blog.featuredImage} className='rounded' />
-                        </div>
-                        <div dangerouslySetInnerHTML={{ __html: decode(data.blog.blogContent) || '' }}>
+    <div class="bg-gray-100 py-8">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">{data.blog.title}</h1>
+            <p class="text-gray-600">Published On: {moment(data.blog.createdAt).format('DD-MM-YYYY')}</p>
+        </div>
+    </div>
+    <div class="py-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row">
+            <div class="w-full md:w-3/4 px-4">
+                <img src={data.blog.featuredImage} className='rounded mb-8' />
+                <div class="prose max-w-none">
+                    <p dangerouslySetInnerHTML={{ __html: decode(data.blog.blogContent) || '' }}>
+			
+                    </p>
+                </div>
+            </div> <br />
+            <div class="w-full md:w-1/4 px-4 mt-10 lg:mt-0">
+                <div class="bg-white p-4">
+                    {/* <h2 class="text-xl font-bold text-gray-800 mb-4">Recent Posts</h2> */}
+                    <ul class="list-none">
+                        <li class="mb-2">
+                            <RelatedBlog props={{ category: category, currentBlog: blog }} />
+                        </li>
+                     </ul>
+                </div>
+             </div>
+        </div>
 
-                        </div>
-
-                        {/* <div className='border-t mt-5 pt-5'>
-                            <Comment props={{ blogid: data.blog._id }} />
-                        </div> */}
-
-
-                    </div>
-                    <div className='border rounded md:w-[30%] w-full p-5 bg-white'>
-                        <RelatedBlog props={{ category: category, currentBlog: blog }} />
-                    </div>
-                </>
+    </div>
+    
+</>
                 :
                 <>
                 <SignIn />
                 </>
                 
             }
-            
-        </div>
+</div>
     )
 }
 

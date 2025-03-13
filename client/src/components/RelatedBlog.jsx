@@ -14,7 +14,7 @@ const RelatedBlog = ({ props }) => {
     return (
         
         <div>
-            <h2 className='text-2xl font-bold mb-5'>Related Blogs</h2>
+            <h2 className='text-2xl font-bold mb-5'>Related Posts</h2>
             <div>
                 {data && data.relatedBlog.length > 0
                     ?
