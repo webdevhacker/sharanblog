@@ -13,6 +13,7 @@ import moment from 'moment'
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { RouteBlogByCategory } from '@/helpers/RouteName'
+import { EmailIcon, EmailShareButton, WhatsappShareButton, WhatsappIcon, TelegramIcon, TelegramShareButton} from 'react-share'
 // import { useSelector } from "react-redux";
 // import GoogleLogin from '@/components/GoogleLogin'
 // import SignIn from './SignIn'
@@ -20,6 +21,7 @@ import { RouteBlogByCategory } from '@/helpers/RouteName'
 const SingleBlogDetails = () => {
     // const user = useSelector(state => state.user)
     const { blog, category } = useParams()
+    const shareUrl = window.location.href;
 
     const { data, loading, error } = useFetch(`${getEnv('VITE_API_BASE_URL')}/blog/get-blog/${blog}`, {
         method: 'get',
@@ -36,7 +38,32 @@ const SingleBlogDetails = () => {
                 <div className="container mx-auto">
                     <h1 className="text-4xl font-bold text-gray-800 mb-2">{data.blog.title}</h1>
                     <p className='text-gray-600'>By {data.blog.author.name} | Published On {moment(data.blog.createdAt).format('DD-MM-YYYY')}</p>
-
+                    <div className='mt-1'>
+                            <EmailShareButton
+                            url={shareUrl}
+                            title={data.blog.title}
+                            separator=":: "
+                            className='mx-1'
+                            >
+                            <EmailIcon size={32} round />
+                            </EmailShareButton>
+                            <WhatsappShareButton
+                            url={shareUrl}
+                            title={data.blog.title}
+                            separator=":: "
+                            className='mx-1'
+                            >
+                            <WhatsappIcon size={32} round />
+                            </WhatsappShareButton>
+                            <TelegramShareButton
+                            url={shareUrl}
+                            title={data.blog.title}
+                            separator=":: "
+                            className='mx-1'
+                            >
+                            <TelegramIcon size={32} round />
+                            </TelegramShareButton>
+                    </div>
                 </div>
              </div>
             <div className="py-8">
