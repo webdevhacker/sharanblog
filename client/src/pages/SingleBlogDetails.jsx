@@ -41,8 +41,7 @@ const SingleBlogDetails = () => {
                     <div className='mt-1'>
                             <EmailShareButton
                             url={shareUrl}
-                            title={data.blog.title}
-                            separator=":: "
+                            subject={data.blog.title}
                             className='mx-1'
                             >
                             <EmailIcon size={32} round />
@@ -50,7 +49,7 @@ const SingleBlogDetails = () => {
                             <WhatsappShareButton
                             url={shareUrl}
                             title={data.blog.title}
-                            separator=":: "
+                            image={`${String(window.location)}/${data.blog.featuredImage}`}
                             className='mx-1'
                             >
                             <WhatsappIcon size={32} round />
@@ -58,7 +57,7 @@ const SingleBlogDetails = () => {
                             <TelegramShareButton
                             url={shareUrl}
                             title={data.blog.title}
-                            separator=":: "
+                            image={`${String(window.location)}/${data.blog.featuredImage}`}
                             className='mx-1'
                             >
                             <TelegramIcon size={32} round />
