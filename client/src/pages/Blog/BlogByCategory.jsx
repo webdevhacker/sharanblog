@@ -16,7 +16,7 @@ const BlogByCategory = () => {
     if (loading) return <Loading />
     return (
         <>
-            <div className='flex items-center gap-3 text-2xl font-bold text-purple-500 border-b pb-3 mb-5'>
+            <div className='flex items-center gap-3 text-2xl font-bold text-[#f509d6] border-b pb-3 mb-5'>
                 <BiCategory />
                 <h4  >   {blogData && blogData.categoryData?.name}</h4>
             </div>

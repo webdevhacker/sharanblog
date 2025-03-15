@@ -26,7 +26,7 @@ const BlogCard = ({ props }) => {
             <div className="flex flex-1 flex-col justify-between bg-white p-6">
             <div className="flex-1">
                 <Link to={RouteBlogByCategory(props.category.slug)}>
-                <p className="text-sm font-medium text-purple-500 hover:underline">
+                <p className="text-sm font-medium text-[#f509d6] hover:underline">
                     {props.category.name}
                 </p>
                 </Link>
