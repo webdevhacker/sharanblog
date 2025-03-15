@@ -49,7 +49,7 @@ const SingleBlogDetails = () => {
                             <WhatsappShareButton
                             url={shareUrl}
                             title={data.blog.title}
-                            image={`${String(window.location)}/${data.blog.featuredImage}`}
+                            image={data.blog.featuredImage}
                             className='mx-1'
                             >
                             <WhatsappIcon size={32} round />
@@ -57,7 +57,7 @@ const SingleBlogDetails = () => {
                             <TelegramShareButton
                             url={shareUrl}
                             title={data.blog.title}
-                            image={`${String(window.location)}/${data.blog.featuredImage}`}
+                            image={data.blog.featuredImage}
                             className='mx-1'
                             >
                             <TelegramIcon size={32} round />
