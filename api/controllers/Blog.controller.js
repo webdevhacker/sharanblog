@@ -77,7 +77,7 @@ export const updateBlog = async (req, res, next) => {
             const uploadResult = await cloudinary.uploader
                 .upload(
                     req.file.path,
-                    { folder: 'yt-mern-blog', resource_type: 'auto' }
+                    { folder: 'sharanblog', resource_type: 'auto' }
                 )
                 .catch((error) => {
                     next(handleError(500, error.message))

@@ -239,7 +239,7 @@ const EditBlog = () => {
 
 
 
-                            <Button type="submit" className="w-full">Submit</Button>
+                            <Button type="submit" className="w-full bg-gradient-to-r from-[#00c6ff] to-[#f509d6]">Submit</Button>
                         </form>
                     </Form>
 
