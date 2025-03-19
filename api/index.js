@@ -23,6 +23,7 @@ app.use(cors({
     headers: ["Content-Type"],
 }))
 
+app.get('/', (req,res)=>res.send("API Working"))
 
 // route setup  
 

@@ -2,10 +2,13 @@ import React from 'react'
 import { Button } from './components/ui/button'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './Layout/Layout'
-import { RouteAddCategory, RouteBlog, RouteBlogAdd, RouteBlogByCategory, RouteBlogDetails, RouteBlogEdit, RouteCategoryDetails, RouteCommentDetails, RouteEditCategory, RouteIndex, RouteProfile, RouteSearch, RouteSignIn, RouteSignUp, RouteUser } from './helpers/RouteName'
+import { RouteAddCategory, RouteBlog, RouteBlogAdd, RouteBlogByCategory, RouteBlogDetails, RouteBlogEdit, RouteCategoryDetails, RouteCommentDetails, RouteEditCategory, RouteIndex, RouteProfile, RouteSearch, RouteSignIn, RouteSignUp, RouteUser, RouteEmailVerify, RouteResetPassword, RouteLogin } from './helpers/RouteName'
 import Index from './pages/Index'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
+import Login from './pages/Login'
+import EmailVerify from './pages/EmailVerify'
+import ResetPassword from './pages/ResetPassword'
 import Profile from './pages/Profile'
 import AddCategory from './pages/Category/AddCategory'
 import CategoryDetails from './pages/Category/CategoryDetails'
@@ -54,6 +57,9 @@ const App = () => {
 
         <Route path={RouteSignIn} element={<SignIn />} />
         <Route path={RouteSignUp} element={<SignUp />} />
+        <Route path={RouteLogin} element={<Login />} />
+        <Route path={RouteEmailVerify} element={<EmailVerify />} />
+        <Route path={RouteResetPassword} element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   )

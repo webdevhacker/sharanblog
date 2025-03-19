@@ -75,15 +75,15 @@ const SignIn = () => {
                     </Link>
                 </div>
                 <h1 className='text-2xl font-bold text-center mb-5'>Get Into Your Account</h1>
-                <div className=''>
+                {/* <div className=''>
                     <GoogleLogin />
-                    {/* <div className='border my-5 flex justify-center items-center'>
+                     <div className='border my-5 flex justify-center items-center'>
                         <span className='absolute bg-white text-sm'>Or</span>
-                    </div> */}
+                    </div>
 
-                </div>
+                </div> */}
 
-                {/* <Form {...form}>
+                <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)}  >
                         <div className='mb-3'>
                             <FormField
@@ -115,6 +115,9 @@ const SignIn = () => {
                                 )}
                             />
                         </div>
+                        <p onClick={()=>navigate('/reset-password')} className='mb-4 text-indigo-500 cursor-pointer'>
+                            Forgot password?
+                        </p>
 
                         <div className='mt-5'>
                             <Button type="submit" className="w-full bg-gradient-to-r from-[#00c6ff] to-[#f509d6]">Sign In</Button>
@@ -124,7 +127,7 @@ const SignIn = () => {
                             </div>
                         </div>
                     </form>
-                </Form> */}
+                </Form>
             </Card>
             </>
         }
