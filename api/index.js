@@ -20,8 +20,6 @@ app.use(express.json())
 app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
-    headers: ["Content-Type"],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }))
 
 app.get('/', (req,res)=>res.send("API Working"))
