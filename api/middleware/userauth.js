@@ -1,33 +1,31 @@
-import jwt from 'jsonwebtoken';
-import { handleError } from '../helpers/handleError.js';
+import jwt from 'jsonwebtoken'
+import { handleError } from "../helpers/handleError.js"
 
-const userauth = async (req, res, next) => {
-    const { token } = req.cookies;
 
-    if (!token) {
-        return res.status(401).json({
+
+const userauth = async (req, res, next)=>{
+    const {token} = req.cookies
+
+    if(!token){
+        return res.status(500).json({
             success: false,
-            message: 'No Token Provided. Unauthorized.'
-        });
+            message: 'Not Authorized.'
+        })
     }
-
-    try {
-        // Decode the JWT token
-        const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
-
-        // Ensure the decoded token exists and contains the admin role
-        if (tokenDecode) {
-            req.user = tokenDecode; // Attach the decoded properties to req.user
-            next();
-        } else {
-            return res.status(403).json({
+    try{
+        const tokenDecode = jwt.verify(token, process.env.JWT_SECRET)
+        if(tokenDecode.id){
+            req.body.userId = tokenDecode.id
+        }else{
+            return res.status(500).json({
                 success: false,
-                message: 'Access Denied. Admins Only.'
-            });
+                message: 'Not Authorized.'
+            })
         }
-    } catch (error) {
-        next(handleError(500, error.message));
-    }
-};
+        next()
 
-export default userauth;
+    }catch(error){
+        next(handleError(500, error.message))
+    }
+}
+export default userauth
