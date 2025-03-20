@@ -3,7 +3,7 @@ import User from "../models/user.model.js"
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import transporter from '../config/nodemailer.js'
-import { EMAIL_VERIFY_TEMPLATE, WELCOME_EMAIL_TEMPLATE, PASSWORD_RESET_TEMPLATE, PASSWORD_CHANGED_TEMPLATE } from "../config/emailTemplates.js"
+import { EMAIL_VERIFY_TEMPLATE, WELCOME_EMAIL_TEMPLATE, PASSWORD_RESET_TEMPLATE, PASSWORD_CHANGED_TEMPLATE, NEW_SIGNIN_EMAIL } from "../config/emailTemplates.js"
 // const [ipDetails, setIpDetails] = useState([]);
 //     useEffect(() => { 
 //         axios.get('https://ipapi.co/json/').then((res) => { 
@@ -86,16 +86,21 @@ export const Login = async (req, res, next) => {
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
 
-        //mail sending
-        // const mailOptions = {
-        //     from: process.env.SENDER_EMAIL,
-        //     to: email,
-        //     subject: "Successful sign-in to your account from new device",
-        //     text: `Dear ${user.name} 
-        //     Noticed a login to your account ${email} from a new device. Was this you?`
+        //User Agent
+        const userAgent = req.headers['user-agent']
 
-        // }
-        // await transporter.sendMail(mailOptions)
+        // Get the IP Address from headers or socket
+        const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress
+
+        //mail sending
+        const mailOptions = {
+            from: process.env.SENDER_EMAIL,
+            to: email,
+            subject: "Successful sign-in to your account from new device",
+            html: NEW_SIGNIN_EMAIL.replace("{{name}}", user.name).replace("{{email}}", user.email).replace("{{ipAddress}}", ipAddress).replace("{{useragent}}", userAgent)
+
+        }
+        await transporter.sendMail(mailOptions)
 
         const newUser = user.toObject({ getters: true })
         delete newUser.password
