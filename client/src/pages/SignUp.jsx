@@ -18,7 +18,7 @@ import { RouteIndex, RouteSignUp } from '@/helpers/RouteName'
 const SignUp = () => {
 
     const navigate = useNavigate()
-
+        
     const formSchema = z.object({
         name: z.string().min(3, 'Name must be at least 3 character long.'),
         email: z.string().email(),

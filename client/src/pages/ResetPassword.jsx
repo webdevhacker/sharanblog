@@ -6,6 +6,8 @@ import axios from 'axios'
 import { showToast } from '@/helpers/showToast'
 import { Card } from '@/components/ui/card'
 import { RouteSignIn, RouteIndex } from '@/helpers/RouteName'
+import { z } from 'zod'
+import { zodResolver } from "@hookform/resolvers/zod"
 
 
 const ResetPassword = () => {
@@ -60,14 +62,32 @@ const ResetPassword = () => {
 
   const onSubmitNewPassword = async (e) =>{
     e.preventDefault()
-    try{
-      const {data} = await axios.post(backendUrl + '/auth/reset-password', {email, otp, newPassword})
-      data.success ? showToast('success', data.message) : showToast('error', data.message)
-      data.success && navigate('/sign-in')
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-    } catch(error){
-      showToast('error', error.message)
+    // Check password validity first
+    if (!passwordRegex.test(newPassword)) {
+        showToast('error', 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.');
+        setError('Invalid password'); // Set an error message
+        return; // Stop further execution
     }
+
+    try {
+        // Make the API request if the password is valid
+        const { data } = await axios.post(`${backendUrl}/auth/reset-password`, { email, otp, newPassword });
+
+        // Show success or error message based on API response
+        if (data.success) {
+            showToast('success', data.message);
+            navigate('/sign-in'); // Redirect to sign-in
+        } else {
+            showToast('error', data.message);
+        }
+    } catch (error) {
+        // Handle any API call errors
+        showToast('error', 'Something went wrong. Please try again.');
+        console.error(error);
+    }
+
   }
   return (
     <div className='flex justify-center items-center h-screen w-screen'>
