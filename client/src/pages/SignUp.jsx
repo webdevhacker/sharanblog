@@ -22,9 +22,16 @@ const SignUp = () => {
     const formSchema = z.object({
         name: z.string().min(3, 'Name must be at least 3 character long.'),
         email: z.string().email(),
-        password: z.string().min(8, 'Password must be at least 8 character long'),
-        confirmPassword: z.string().refine(data => data.password === data.confirmPassword, 'Password and confirm password should be same.')
-    })
+        password: z.string().min(8, 'Password must be at least 8 character long')
+        .regex(/[A-Z]/, "Password must contain at least one uppercase letter") // At least one uppercase
+        .regex(/[a-z]/, "Password must contain at least one lowercase letter") // At least one lowercase
+        .regex(/[0-9]/, "Password must contain at least one number") // At least one number
+        .regex(/[@$!%*?&#]/, "Password must contain at least one special character"), // At least one special character,
+        confirmPassword: z.string()
+    }).refine(data => data.password === data.confirmPassword, {
+        message: 'Password and confirm password should be the same.',
+        path: ['confirmPassword'],
+      })
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -128,7 +135,7 @@ const SignUp = () => {
                                     <FormItem>
                                         <FormLabel>Confirm Password</FormLabel>
                                         <FormControl>
-                                            <Input type="password" placeholder="Enter  password again" {...field} />
+                                            <Input type="password" placeholder="Enter password again" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

@@ -429,7 +429,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
 														<tr>
 															<td class="pad">
 																<div style="color:#40507a;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;line-height:120%;text-align:left;mso-line-height-alt:19.2px;">
-																	<p style="margin: 0; word-break: break-word;"><span style="word-break: break-word;">Hey {{name}}.</span></p>
+																	<p style="margin: 0; word-break: break-word;"><span style="word-break: break-word;">Hey <strong>{{name}}</strong>,</span></p>
 																</div>
 															</td>
 														</tr>

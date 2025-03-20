@@ -46,7 +46,7 @@ const BlogDetails = () => {
     if (loading) return <Loading />
     return (
         <div>
-            {user && user.isLoggedIn && user.user.role === 'admin'
+            {user && user.isLoggedIn
             ? <>
             <Card>
                 <CardHeader>

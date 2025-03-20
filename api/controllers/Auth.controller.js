@@ -75,7 +75,7 @@ export const Login = async (req, res, next) => {
             next(handleError(404, 'Invalid login credentials.'))
         }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn:'7d'})
+        const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn:'7d'})
 
         res.cookie('token', token, {
             httpOnly: true,
@@ -184,9 +184,16 @@ export const Logout = async (req, res, next) => {
 export const sendVerifyOtp = async (req,res,next) =>{
     try{
         const {userId} = req.body
+        if (!userId) {
+            return res.status(400).json({
+                success: false,
+                message: 'User ID is required.'
+            });
+        }
+        
         const user = await User.findById(userId)
         if(user.isAccountVerified){
-            res.status(500).json({
+            res.status(200).json({
                 success: false,
                 message: 'Account Already Verified.'
             })
@@ -363,7 +370,7 @@ export const resetPassword = async (req, res, next)=>{
             to: email,
             subject: "Your account password has successfully changed",
             //text: `Dear ${user.name} Your account password has successfully changed.`
-            html: EMAIL_VERIFY_TEMPLATE.replace("{{name}}", user.name).replace("{{email}}", user.email)
+            html: PASSWORD_CHANGED_TEMPLATE.replace("{{name}}", user.name).replace("{{email}}", user.email)
 
         }
         await transporter.sendMail(mailOptions)

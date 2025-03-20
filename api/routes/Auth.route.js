@@ -15,5 +15,4 @@ AuthRoute.get('/is-auth', userauth, isAuthenticated)
 AuthRoute.post('/send-reset-otp', sendResetOtp)
 AuthRoute.post('/reset-password', resetPassword)
 
-
 export default AuthRoute
