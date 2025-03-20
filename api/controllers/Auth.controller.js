@@ -217,20 +217,20 @@ export const sendVerifyOtp = async (req,res,next) =>{
         // const locationData = geoResponse.data
 
         // Format the response
-        const userInfo = {
-            userAgent,
-            ipAddress,
-            //location: locationData,
-        }
+        // const userInfo = {
+        //     userAgent,
+        //     ipAddress,
+        //     //location: locationData,
+        // }
 
-       res.json(userInfo)
+    //    res.json(userInfo)
 
         const mailOptions = {
             from: process.env.SENDER_EMAIL,
             to: user.email,
             subject: `Account verification OTP`,
             // text: `Dear ${user.name}, Your account verification otp: ${otp}`,
-            html: EMAIL_VERIFY_TEMPLATE.replace("{{name}}", user.name).replace("{{email}}", user.email).replace("{{otp}}", otp)
+            html: EMAIL_VERIFY_TEMPLATE.replace("{{name}}", user.name).replace("{{email}}", user.email).replace("{{otp}}", otp).replace("{{ipAddress}}", ipAddress)
         }
         await transporter.sendMail(mailOptions)
         return res.status(200).json({
@@ -390,6 +390,11 @@ export const resetPassword = async (req, res, next)=>{
         user.resetOtpExpireAt = 0
 
         await user.save()
+        // Extract the User Agent from request headers
+        const userAgent = req.headers['user-agent']
+
+        // Get the IP Address from headers or socket
+        const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress
 
         //mail sending
         const mailOptions = {
@@ -397,7 +402,7 @@ export const resetPassword = async (req, res, next)=>{
             to: email,
             subject: "Your account password has successfully changed",
             //text: `Dear ${user.name} Your account password has successfully changed.`
-            html: PASSWORD_CHANGED_TEMPLATE.replace("{{name}}", user.name).replace("{{email}}", user.email)
+            html: PASSWORD_CHANGED_TEMPLATE.replace("{{name}}", user.name).replace("{{email}}", user.email).replace("{{ipAddress}}", ipAddress).replace("{{useragent}}", userAgent)
 
         }
         await transporter.sendMail(mailOptions)
