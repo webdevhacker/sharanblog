@@ -2530,7 +2530,7 @@ export const NEW_SIGNIN_EMAIL = `
                     <td class="content-cell">
                       <div class="f-fallback">
                         <h1>Dear {{name}},</h1>
-                        <h2>Noticed a login to your account {{email}} from a new device. Was this you?</h2>
+                        <h2>Noticed a sign-in to your account {{email}} from a new device. Was this you?</h2>
                         <p><strong>Address: {{ipAddress}}</strong></p>
                         <p><strong>User Agent: {{useragent}}</strong></p>
                         <!-- Action -->
