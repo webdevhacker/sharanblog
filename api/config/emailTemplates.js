@@ -961,7 +961,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
           <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
               <td class="email-masthead">
-                <a href="https:blog.isharankumar.com" class="f-fallback email-masthead_name">
+                <a href="https://blog.isharankumar.com" class="f-fallback email-masthead_name">
                 SHARAN KUMAR BLOG
               </a>
               </td>
@@ -1479,7 +1479,7 @@ export const PASSWORD_RESET_TEMPLATE = `
           <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
               <td class="email-masthead">
-                <a href="https:blog.isharankumar.com" class="f-fallback email-masthead_name">
+                <a href="https://blog.isharankumar.com" class="f-fallback email-masthead_name">
                 SHARAN KUMAR BLOG
               </a>
               </td>
@@ -1996,7 +1996,7 @@ export const PASSWORD_CHANGED_TEMPLATE = `
           <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
               <td class="email-masthead">
-                <a href="https:blog.isharankumar.com" class="f-fallback email-masthead_name">
+                <a href="https://blog.isharankumar.com" class="f-fallback email-masthead_name">
                 SHARAN KUMAR BLOG
               </a>
               </td>
