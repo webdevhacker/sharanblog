@@ -132,6 +132,7 @@ export const GoogleLogin = async (req, res, next) => {
 
         const token = jwt.sign({
             _id: user._id,
+            role: user.role,
             name: user.name,
             email: user.email,
             avatar: user.avatar
@@ -285,7 +286,7 @@ export const isAuthenticated = async (req, res, next)=>{
 export const sendResetOtp = async (req, res, next)=>{
     const {email} = req.body
     if(!email){
-        return res.status(500).json({
+        return res.status(200).json({
             success: true,
             message: 'Email is required'
         })
