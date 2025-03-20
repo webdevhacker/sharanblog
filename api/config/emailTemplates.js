@@ -458,7 +458,7 @@ export const EMAIL_VERIFY_TEMPLATE = `
                     <td class="content-cell">
                       <div class="f-fallback">
                         <h1>Dear {{name}},</h1>
-                        <p>A request is received to verify your account associated with the email id {{email}}. Kindly enter the below OTP to verify your account.</p>
+                        <p>A request from {{ipAddress}} is received to verify your account associated with the email id {{email}}. Kindly enter the below OTP to verify your account.</p>
                         <!-- Action -->
                         <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
@@ -1493,7 +1493,7 @@ export const PASSWORD_RESET_TEMPLATE = `
                     <td class="content-cell">
                       <div class="f-fallback">
                         <h1>Dear {{name}},</h1>
-                        <p>A request is received to reset your password for the account associated with email id {{email}}. Kindly enter the below OTP to reset your account password.</p>
+                        <p>A request from {{ipAddress}} is received to reset your password for the account associated with email id {{email}}. Kindly enter the below OTP to reset your account password.</p>
                         <!-- Action -->
                         <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>

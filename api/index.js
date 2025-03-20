@@ -26,6 +26,9 @@ app.use(cors({
 
 app.get('/', (req,res)=>res.send("API Working"))
 
+//Proxy trust
+app.set('trust proxy', true);
+
 // route setup  
 
 app.use('/api/auth', AuthRoute)

@@ -39,6 +39,7 @@ export const Register = async (req, res, next) => {
             'none' : 'strict',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
+
             //mail sending
         const mailOptions = {
             from: process.env.SENDER_EMAIL,
@@ -205,6 +206,25 @@ export const sendVerifyOtp = async (req,res,next) =>{
 
         await user.save()
 
+        // Extract the User Agent from request headers
+        const userAgent = req.headers['user-agent']
+
+        // Get the IP Address from headers or socket
+        const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress
+
+        // Fetch location data using the geolocation API
+        // const geoResponse = await axios.get(`${process.env.GEO_API_URL}/${ipAddress}`)
+        // const locationData = geoResponse.data
+
+        // Format the response
+        const userInfo = {
+            userAgent,
+            ipAddress,
+            //location: locationData,
+        }
+
+       res.json(userInfo)
+
         const mailOptions = {
             from: process.env.SENDER_EMAIL,
             to: user.email,
@@ -305,12 +325,18 @@ export const sendResetOtp = async (req, res, next)=>{
 
         await user.save()
 
+        // Extract the User Agent from request headers
+        const userAgent = req.headers['user-agent']
+
+        // Get the IP Address from headers or socket
+        const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress
+
         const mailOptions = {
             from: process.env.SENDER_EMAIL,
             to: user.email,
             subject: `Password reset OTP`,
             // text: `Dear ${user.name}, Your password reset otp: ${otp}`
-            html: PASSWORD_RESET_TEMPLATE.replace("{{name}}", user.name).replace("{{email}}", user.email).replace("{{otp}}", otp)
+            html: PASSWORD_RESET_TEMPLATE.replace("{{name}}", user.name).replace("{{email}}", user.email).replace("{{otp}}", otp).replace("{{ipAddress}}", ipAddress)
         }
         await transporter.sendMail(mailOptions)
         return res.status(200).json({
