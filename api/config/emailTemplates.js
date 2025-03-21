@@ -2531,7 +2531,7 @@ export const NEW_SIGNIN_EMAIL = `
                       <div class="f-fallback">
                         <h1>Dear {{name}},</h1>
                         <h2>Noticed a sign-in to your account {{email}} from a new device. Was this you?</h2>
-                        <p><strong>Address: {{ipAddress}}</strong></p>
+                        <p><strong>IP Address: {{ipAddress}}</strong></p>
                         <p><strong>User Agent: {{useragent}}</strong></p>
                         <!-- Action -->
                         <p>You're receiving this message because of a successful sign-in from a device. <strong>If you believe that this sign-in is suspicious</strong>, please <a href="https://blog.isharankumar.com/reset-password">reset your password</a> immediately. If you're aware of this sign-in, please ignore this notice. This can happen when you use your browser's incognito or private browsing mode or clear your cookies.</p>
