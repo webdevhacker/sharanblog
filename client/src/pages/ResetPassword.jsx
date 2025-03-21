@@ -53,14 +53,12 @@ const ResetPassword = () => {
       showToast('error', error.message)
     }
   }
-  
   const onSubmitOtp = async (e)=>{
     e.preventDefault()
     const OtpArray = inputRefs.current.map(e => e.value)
     setOtp(OtpArray.join(''))
     setIsOtpSubmit(true)
   }
-  
 
   const onSubmitNewPassword = async (e) =>{
     e.preventDefault()
