@@ -3,11 +3,10 @@ import { deleteUser, getAllUser, getUser, updateUser } from '../controllers/User
 import upload from '../config/multer.js'
 import { authenticate } from '../middleware/authenticate.js'
 import userauth from '../middleware/userauth.js'
-import onlyadmin from '../middleware/onlyadmin.js'
 
 const UserRoute = express.Router()
 
-UserRoute.use(onlyadmin)
+UserRoute.use(userauth)
 
 UserRoute.get('/get-user/:userid', getUser)
 UserRoute.put('/update-user/:userid', upload.single('file'), updateUser)
