@@ -475,7 +475,7 @@ export const EMAIL_VERIFY_TEMPLATE = `
                             </td>
                           </tr>
                         </table>
-                        <p>For security, this OTP is only valid for the next <strong>15 minutes</strong>. If you did not request this, please ignore this email or <a href="mailto:email@isharankumar.com">contact me</a> if you have questions.</p>
+                        <p>For security, this OTP is only valid for the next <strong>15 minutes</strong>. If you did not request this, please ignore this email or <a href="mailto:hello@isharankumar.com">contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
                             Web Developer,
@@ -993,7 +993,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
                             </td>
                           </tr>
                         </table>
-                        <p><a href="mailto:email@isharankumar.com">Contact Me</a> if you have questions.</p>
+                        <p><a href="mailto:hello@isharankumar.com">Contact Me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
                             Web Developer,
@@ -1510,7 +1510,7 @@ export const PASSWORD_RESET_TEMPLATE = `
                             </td>
                           </tr>
                         </table>
-                        <p>For security, this password reset is only valid for the next <strong>15 minutes</strong>. If you did not request a password reset, please ignore this email or <a href="mailto:email@isharankumar.com">contact me</a> if you have questions.</p>
+                        <p>For security, this password reset is only valid for the next <strong>15 minutes</strong>. If you did not request a password reset, please ignore this email or <a href="mailto:hello@isharankumar.com">contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
                             Web Developer,
@@ -2030,7 +2030,7 @@ export const PASSWORD_CHANGED_TEMPLATE = `
                             </td>
                           </tr>
                         </table>
-                        <p>If you aware of these changes, You can ignore this message or <a href="mailto:email@isharankumar.com">contact me</a> if you have questions.</p>
+                        <p>If you aware of these changes, You can ignore this message or <a href="mailto:hello@isharankumar.com">contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
                             Web Developer,
@@ -2535,7 +2535,7 @@ export const NEW_SIGNIN_EMAIL = `
                         <p><strong>User Agent: {{useragent}}</strong></p>
                         <!-- Action -->
                         <p>You're receiving this message because of a successful sign-in from a device. <strong>If you believe that this sign-in is suspicious</strong>, please <a href="https://blog.isharankumar.com/reset-password">reset your password</a> immediately. If you're aware of this sign-in, please ignore this notice. This can happen when you use your browser's incognito or private browsing mode or clear your cookies.</p>
-                        <p><a href="mailto:email@isharankumar.com">Contact Me</a> if you have questions.</p>
+                        <p><a href="mailto:hello@isharankumar.com">Contact Me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
                             Web Developer,
