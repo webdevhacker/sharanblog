@@ -195,7 +195,7 @@ const PrivacyPolicy = () => {
 <h4 className='font-bold'>Contact Us</h4>
 <p>If you have any questions about this Privacy Policy, You can contact us:</p>
 <ul>
-<li>By email: <Link href="mailto:hello@isharankumar.com">hello@isharankumar.com</Link>
+<li>By email: <Link to="mailto:hello@isharankumar.com">hello@isharankumar.com</Link>
 </li>
 </ul>
 </div>
