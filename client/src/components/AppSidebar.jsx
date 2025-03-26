@@ -49,7 +49,7 @@ const AppSidebar = () => {
                             </SidebarMenuButton>
                             <SidebarMenuButton>
                                 <MdOutlinePrivacyTip />
-                                <Link to={RoutePrivacy} target='_blank'>Privacy Policy</Link>
+                                <Link to={RoutePrivacy}>Privacy Policy</Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
 
