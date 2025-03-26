@@ -1,4 +1,5 @@
 export const RouteIndex = '/'
+export const RoutePrivacy = '/privacy-policy'
 export const RouteSignIn = '/sign-in'
 export const RouteSignUp = '/sign-up'
 export const RouteLogin = '/login'

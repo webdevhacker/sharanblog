@@ -17,7 +17,8 @@ import { GrBlog } from "react-icons/gr";
 import { FaRegComments } from "react-icons/fa6";
 import { LuUsers } from "react-icons/lu";
 import { GoDot } from "react-icons/go";
-import { RouteBlog, RouteBlogByCategory, RouteCategoryDetails, RouteCommentDetails, RouteIndex, RouteUser } from "@/helpers/RouteName";
+import { MdOutlinePrivacyTip } from "react-icons/md";
+import { RouteBlog, RouteBlogByCategory, RouteCategoryDetails, RouteCommentDetails, RouteIndex, RouteUser, RoutePrivacy } from "@/helpers/RouteName";
 import { useFetch } from "@/hooks/useFetch";
 import { getEnv } from "@/helpers/getEnv";
 import { useSelector } from "react-redux";
@@ -45,6 +46,10 @@ const AppSidebar = () => {
                             <SidebarMenuButton>
                                 <CgWebsite />
                                 <Link to='https://isharankumar.com' target='_blank'>Portfolio</Link>
+                            </SidebarMenuButton>
+                            <SidebarMenuButton>
+                                <MdOutlinePrivacyTip />
+                                <Link to={RoutePrivacy} target='_blank'>Privacy Policy</Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
 

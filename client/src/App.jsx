@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from './components/ui/button'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './Layout/Layout'
-import { RouteAddCategory, RouteBlog, RouteBlogAdd, RouteBlogByCategory, RouteBlogDetails, RouteBlogEdit, RouteCategoryDetails, RouteCommentDetails, RouteEditCategory, RouteIndex, RouteProfile, RouteSearch, RouteSignIn, RouteSignUp, RouteUser, RouteEmailVerify, RouteResetPassword, RouteLogin } from './helpers/RouteName'
+import { RouteAddCategory, RouteBlog, RouteBlogAdd, RouteBlogByCategory, RouteBlogDetails, RouteBlogEdit, RouteCategoryDetails, RouteCommentDetails, RouteEditCategory, RouteIndex, RouteProfile, RouteSearch, RouteSignIn, RouteSignUp, RouteUser, RouteEmailVerify, RouteResetPassword, RouteLogin, RoutePrivacy } from './helpers/RouteName'
 import Index from './pages/Index'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
@@ -23,6 +23,7 @@ import Comments from './pages/Comments'
 import User from './pages/User'
 import AuthRouteProtechtion from './components/AuthRouteProtechtion'
 import OnlyAdminAllowed from './components/OnlyAdminAllowed'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
       <Routes>
         <Route path={RouteIndex} element={<Layout />} >
           <Route index element={<Index />} />
+          <Route path={RoutePrivacy} element={<PrivacyPolicy />} />
 
 
           <Route path={RouteBlogDetails()} element={<SingleBlogDetails />} />
