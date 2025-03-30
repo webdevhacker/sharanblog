@@ -28,6 +28,7 @@ const AddBlog = () => {
     const navigate = useNavigate()
     const user = useSelector((state) => state.user)
     const { data: categoryData, loading, error } = useFetch(`${getEnv('VITE_API_BASE_URL')}/category/all-category`, {
+        mode: 'no-cors',
         method: 'get',
         credentials: 'include'
     })
