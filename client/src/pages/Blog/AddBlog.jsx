@@ -83,7 +83,6 @@ const AddBlog = () => {
 
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/blog/add`, {
                 method: 'POST',
-                //mode: 'no-cors',
                 headers: { 'Content-type': 'application/json' },
                 credentials: 'include',
                 body: formData
