@@ -85,7 +85,7 @@ const AddBlog = () => {
                 method: 'POST',
                 //mode: 'no-cors',
                 headers: { 'Content-type': 'application/json' },
-                credentials: 'include',
+                credentials: 'same-origin',
                 body: formData
             })
             const data = await response.json()
