@@ -7,7 +7,7 @@ import AuthRoute from './routes/Auth.route.js'
 import UserRoute from './routes/User.route.js'
 import CategoryRoute from './routes/Category.route.js'
 import BlogRoute from './routes/Blog.route.js'
-import bodyParser from 'body-parser'
+//import bodyParser from 'body-parser'
 // import CommentRouote from './routes/Comment.route.js'
 // import BlogLikeRoute from './routes/Bloglike.route.js'
 
@@ -31,8 +31,8 @@ app.get('/', (req,res)=>res.send("API Working"))
 app.set('trust proxy', true);
 
 //Upload
-app.use(bodyParser.json({ limit: '10mb' })); // Adjust the limit as needed
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+// app.use(bodyParser.json({ limit: '10mb' })); // Adjust the limit as needed
+// app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 // route setup  
 
 app.use('/api/auth', AuthRoute)
