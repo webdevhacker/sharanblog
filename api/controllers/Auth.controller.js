@@ -107,7 +107,7 @@ export const Login = async (req, res, next) => {
         res.status(200).json({
             success: true,
             user: newUser,
-            message: `Ah, there you are! It's always a delight to see you` + newUser.name + `🥳`
+            message: `Ah, there you are! It's always a delight to see you ` + newUser.name + `🥳`
         })
 
     } catch (error) {
