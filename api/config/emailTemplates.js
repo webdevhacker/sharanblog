@@ -478,7 +478,7 @@ export const EMAIL_VERIFY_TEMPLATE = `
                         <p>For security, this OTP is only valid for the next <strong>15 minutes</strong>. If you did not request this, please ignore this email or <a href="mailto:hello@isharankumar.com">contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Web Developer,
+                            Developer,
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
@@ -996,7 +996,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
                         <p><a href="mailto:hello@isharankumar.com">Contact Me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Web Developer,
+                            Developer,
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
@@ -1513,7 +1513,7 @@ export const PASSWORD_RESET_TEMPLATE = `
                         <p>For security, this password reset is only valid for the next <strong>15 minutes</strong>. If you did not request a password reset, please ignore this email or <a href="mailto:hello@isharankumar.com">contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Web Developer,
+                            Developer,
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
@@ -2033,7 +2033,7 @@ export const PASSWORD_CHANGED_TEMPLATE = `
                         <p>If you aware of these changes, You can ignore this message or <a href="mailto:hello@isharankumar.com">contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Web Developer,
+                            Developer,
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
@@ -2538,7 +2538,7 @@ export const NEW_SIGNIN_EMAIL = `
                         <p><a href="mailto:hello@isharankumar.com">Contact Me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Web Developer,
+                            Developer,
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">

@@ -66,7 +66,7 @@ const ResetPassword = () => {
 
     // Check password validity first
     if (!passwordRegex.test(newPassword)) {
-        showToast('error', 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.');
+        showToast('error', 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character😀');
         setError('Invalid password'); // Set an error message
         return; // Stop further execution
     }

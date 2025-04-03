@@ -53,7 +53,7 @@ export const Register = async (req, res, next) => {
 
         return res.status(200).json({
             success: true,
-            message: 'Registration successful.'
+            message: 'Registration successful🥳'
         })
 
     } catch (error) {
@@ -67,13 +67,13 @@ export const Login = async (req, res, next) => {
         const { email, password } = req.body
         const user = await User.findOne({ email })
         if (!user) {
-            next(handleError(404, 'Invalid login credentials.'))
+            next(handleError(404, `Oh no! couldn't recognize those credentials🥺`))
         }
         const hashedPassword = user.password
 
         const comparePassword = await bcryptjs.compare(password, hashedPassword)
         if (!comparePassword) {
-            next(handleError(404, 'Invalid login credentials.'))
+            next(handleError(404, `Oh no! couldn't recognize those credentials🥺`))
         }
 
         const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn:'7d'})
@@ -107,7 +107,7 @@ export const Login = async (req, res, next) => {
         res.status(200).json({
             success: true,
             user: newUser,
-            message: `You are now login as ` + newUser.email
+            message: `Ah, there you are! It's always a delight to see you` + newUser.name + `🥳`
         })
 
     } catch (error) {
@@ -179,7 +179,7 @@ export const Logout = async (req, res, next) => {
 
         res.status(200).json({
             success: true,
-            message: 'Logout successful.'
+            message: `Goodbye for now, you've logged out flawlessly🥹`
         })
 
     } catch (error) {
@@ -240,7 +240,7 @@ export const sendVerifyOtp = async (req,res,next) =>{
         await transporter.sendMail(mailOptions)
         return res.status(200).json({
             success: true,
-            message: 'An account verification email with OTP sent successfully.'
+            message: 'An account verification email with OTP sent successfully😀'
         })
 
 
@@ -266,13 +266,13 @@ export const veryEmail = async (req, res, next) =>{
             })
         }
         if(user.verifyOtp === '' || user.verifyOtp!==otp){
-            return res.status(500).json({
+            return res.status(200).json({
                 success: false,
                 message: 'Invalid OTP.'
             })
         }
         if(user.verifyOtpExpireAt < Date.now()){
-            return res.status(500).json({
+            return res.status(200).json({
                 success: false,
                 message: 'OTP Expired.'
             })
@@ -284,7 +284,7 @@ export const veryEmail = async (req, res, next) =>{
 
         return res.status(200).json({
             success: true,
-            message: 'Account verified successfully. Now login to your account',
+            message: 'Account verified successfully. Now login to your account🥳',
             
         })
 
@@ -346,7 +346,7 @@ export const sendResetOtp = async (req, res, next)=>{
         await transporter.sendMail(mailOptions)
         return res.status(200).json({
             success: true,
-            message: 'Email with reset OTP sent successfully.'
+            message: 'Email with password reset OTP sent successfully😀'
         })
 
 
@@ -414,7 +414,7 @@ export const resetPassword = async (req, res, next)=>{
 
         return res.status(200).json({
             success: true,
-            message: 'Password changed successful.'
+            message: 'Your account password has successfully changed🥳'
         })
 
     }catch(error){
