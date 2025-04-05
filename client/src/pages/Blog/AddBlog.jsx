@@ -41,7 +41,7 @@ const AddBlog = () => {
         slug: z.string().min(3, 'Slug must be at least 3 character long.'),
         description: z.string().max(250, 'Description should be min 250 character word'),
         blogContent: z.string().min(3, 'Blog content must be at least 3 character long.'),
-    })
+    }) 
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -83,7 +83,7 @@ const AddBlog = () => {
 
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/blog/add`, {
                 method: 'POST',
-                headers: { 'Content-type': 'application/json' },
+                // headers: { 'Content-type': 'application/json' },
                 credentials: 'include',
                 body: formData
             })
