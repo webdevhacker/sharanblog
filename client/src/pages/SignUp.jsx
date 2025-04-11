@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import React from 'react'
+import React, { useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -13,12 +13,12 @@ import { showToast } from '@/helpers/showToast'
 import GoogleLogin from '@/components/GoogleLogin'
 import logo from '@/assets/images/sharanlogo.png'
 import { RouteIndex, RouteSignUp } from '@/helpers/RouteName'
-
+// import PasswordStrengthMeter from '@/components/PasswordStrenght'
 
 const SignUp = () => {
 
     const navigate = useNavigate()
-        
+
     const formSchema = z.object({
         name: z.string().min(3, 'Name must be at least 3 character long.'),
         email: z.string().email(),
@@ -126,6 +126,7 @@ const SignUp = () => {
                                     </FormItem>
                                 )}
                             />
+                            
                         </div>
                         <div className='mb-3'>
                             <FormField

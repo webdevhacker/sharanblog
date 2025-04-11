@@ -55,7 +55,20 @@ const userSchema = new mongoose.Schema({
         type:Date,
         default: Date.now
     },
+    failedLoginAttempts:{
+        type:Number,
+        default:0
+    },
+    lockUntil:{ 
+        type: Date, 
+        default: null 
+    },
 })
+
+// A helper method to check if the user's account is locked
+userSchema.methods.isLocked = function () {
+    return this.lockUntil && this.lockUntil > Date.now();
+  };
 
 const User = mongoose.model('User', userSchema, 'users')
 export default User 

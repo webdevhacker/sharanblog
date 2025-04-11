@@ -3,7 +3,8 @@ import User from "../models/user.model.js"
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import transporter from '../config/nodemailer.js'
-import { EMAIL_VERIFY_TEMPLATE, WELCOME_EMAIL_TEMPLATE, PASSWORD_RESET_TEMPLATE, PASSWORD_CHANGED_TEMPLATE, NEW_SIGNIN_EMAIL } from "../config/emailTemplates.js"
+import { EMAIL_VERIFY_TEMPLATE, WELCOME_EMAIL_TEMPLATE, PASSWORD_RESET_TEMPLATE, PASSWORD_CHANGED_TEMPLATE, 
+    NEW_SIGNIN_EMAIL, ACCOUNT_LOCKED_EMAIL } from "../config/emailTemplates.js"
 // const [ipDetails, setIpDetails] = useState([]);
 //     useEffect(() => { 
 //         axios.get('https://ipapi.co/json/').then((res) => { 
@@ -61,20 +62,67 @@ export const Register = async (req, res, next) => {
     }
 }
 
-
 export const Login = async (req, res, next) => {
     try {
+        const maxLoginAttempts = 3;          // Maximum incorrect attempts allowed
+
+        const lockTime = 10 * 60 * 1000;      //10 minutes
+
+        //User Agent
+        const userAgent = req.headers['user-agent']
+
+        // Get the IP Address from headers or socket
+        const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress
+        
         const { email, password } = req.body
         const user = await User.findOne({ email })
         if (!user) {
-            next(handleError(404, `Oh no! couldn't recognize those credentials🥺`))
+            next(handleError(404, `No user found with those credentials`))
         }
-        const hashedPassword = user.password
+        // Check if the account is locked
+        if (user.isLocked()) {
+            return res
+            .status(403)
+            .json({ message: 'Account is locked. Please try again in 10 minutes.' });
+        }
 
-        const comparePassword = await bcryptjs.compare(password, hashedPassword)
-        if (!comparePassword) {
-            next(handleError(404, `Oh no! couldn't recognize those credentials🥺`))
+        // Compare provided password with the hashed password in the database
+        const passwordMatch = await bcryptjs.compare(password, user.password);
+
+        if (!passwordMatch) {
+        // Increase failed login attempts
+        user.failedLoginAttempts += 1;
+
+        // If threshold exceeded, lock the account
+        if (user.failedLoginAttempts >= maxLoginAttempts) {
+            user.lockUntil = Date.now() + lockTime;
+            //send account lock mail to the user
+            const mailOptions = {
+                from: process.env.SENDER_EMAIL,
+                to: email,
+                subject: "Account Locked Due to Multiple Failed Login Attempts",
+                html: ACCOUNT_LOCKED_EMAIL.replace("{{name}}", user.name).replace("{{email}}", user.email).replace("{{ipAddress}}", ipAddress).replace("{{useragent}}", userAgent)
+
+            }
+            await transporter.sendMail(mailOptions)
         }
+
+        await user.save();
+        return res.status(400).json({ message: `Oh no! couldn't recognize those credentials. Only 3 attempts for retry` });
+        }
+
+        // Successful login: reset the count and lock timestamp
+        user.failedLoginAttempts = 0;
+        user.lockUntil = null;
+        await user.save();
+
+
+        // const hashedPassword = user.password
+
+        // const comparePassword = await bcryptjs.compare(password, hashedPassword)
+        // if (!comparePassword) {
+        //     next(handleError(404, `Oh no! couldn't recognize those credentials🥺`))
+        // }
 
         const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn:'7d'})
 
@@ -85,12 +133,6 @@ export const Login = async (req, res, next) => {
             'none' : 'strict',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
-
-        //User Agent
-        const userAgent = req.headers['user-agent']
-
-        // Get the IP Address from headers or socket
-        const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress
 
         //mail sending
         const mailOptions = {
@@ -107,7 +149,7 @@ export const Login = async (req, res, next) => {
         res.status(200).json({
             success: true,
             user: newUser,
-            message: `Ah, there you are! It's always a delight to see you, ` + newUser.name + `🥳`
+            message: `Ah, there you are! It's always a delight to see you, ` + newUser.name
         })
 
     } catch (error) {
@@ -179,7 +221,7 @@ export const Logout = async (req, res, next) => {
 
         res.status(200).json({
             success: true,
-            message: `Goodbye for now, you've logged out flawlessly🥹`
+            message: `Goodbye for now, you've logged out flawlessly`
         })
 
     } catch (error) {
@@ -240,7 +282,7 @@ export const sendVerifyOtp = async (req,res,next) =>{
         await transporter.sendMail(mailOptions)
         return res.status(200).json({
             success: true,
-            message: 'An account verification email with OTP sent successfully😀'
+            message: 'An account verification email with OTP sent successfully'
         })
 
 
@@ -284,7 +326,7 @@ export const veryEmail = async (req, res, next) =>{
 
         return res.status(200).json({
             success: true,
-            message: 'Account verified successfully. Now login to your account🥳',
+            message: 'Account verified successfully. Now login to your account',
             
         })
 
@@ -346,7 +388,7 @@ export const sendResetOtp = async (req, res, next)=>{
         await transporter.sendMail(mailOptions)
         return res.status(200).json({
             success: true,
-            message: 'Email with password reset OTP sent successfully😀'
+            message: 'Email with password reset OTP sent successfully'
         })
 
 
@@ -414,7 +456,7 @@ export const resetPassword = async (req, res, next)=>{
 
         return res.status(200).json({
             success: true,
-            message: 'Your account password has successfully changed🥳'
+            message: 'Your account password has successfully changed'
         })
 
     }catch(error){
