@@ -3036,7 +3036,7 @@ export const ACCOUNT_LOCKED_EMAIL = `
                       <div class="f-fallback">
                         <h1>Dear {{name}},</h1>
                         <h2>Noticed multiple failed login attempts to your account {{email}} from a device. And for security purposes your account has been locked for next 10 minutes.</h2>
-                        <p><strong>Address: {{ipAddress}}</strong></p>
+                        <p><strong>IP Address: {{ipAddress}}</strong></p>
                         <p><strong>User Agent: {{useragent}}</strong></p>
                         <!-- Action -->
                         <p><strong>If you believe that this sign-in attempts is suspicious</strong>, please <a href="https://blog.isharankumar.com/reset-password">reset your password</a> immediately.</p>
