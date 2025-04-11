@@ -100,7 +100,7 @@ export const Login = async (req, res, next) => {
             const mailOptions = {
                 from: process.env.SENDER_EMAIL,
                 to: email,
-                subject: "Account Locked Due to Multiple Failed Login Attempts",
+                subject: "Account locked due to multiple failed login attempts",
                 html: ACCOUNT_LOCKED_EMAIL.replace("{{name}}", user.name).replace("{{email}}", user.email).replace("{{ipAddress}}", ipAddress).replace("{{useragent}}", userAgent)
 
             }

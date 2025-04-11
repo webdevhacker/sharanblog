@@ -478,7 +478,7 @@ export const EMAIL_VERIFY_TEMPLATE = `
                         <p>For security, this OTP is only valid for the next <strong>15 minutes</strong>. If you did not request this, please ignore this email or <a href="mailto:hello@isharankumar.com">contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Developer,
+                            Developer
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
@@ -996,7 +996,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
                         <p><a href="mailto:hello@isharankumar.com">Contact Me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Developer,
+                            Developer
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
@@ -1513,7 +1513,7 @@ export const PASSWORD_RESET_TEMPLATE = `
                         <p>For security, this password reset is only valid for the next <strong>15 minutes</strong>. If you did not request a password reset, please ignore this email or <a href="mailto:hello@isharankumar.com">contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Developer,
+                            Developer
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
@@ -2033,7 +2033,7 @@ export const PASSWORD_CHANGED_TEMPLATE = `
                         <p>If you aware of these changes, You can ignore this message or <a href="mailto:hello@isharankumar.com">contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Developer,
+                            Developer
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
@@ -2538,7 +2538,7 @@ export const NEW_SIGNIN_EMAIL = `
                         <p><a href="mailto:hello@isharankumar.com">Contact Me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
-                            Developer,
+                            Developer
                         </p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
@@ -3035,11 +3035,11 @@ export const ACCOUNT_LOCKED_EMAIL = `
                     <td class="content-cell">
                       <div class="f-fallback">
                         <h1>Dear {{name}},</h1>
-                        <h2>Noticed a failed login to your account {{email}} from a device. And for security purposes your account has been locked for next 10 minutes.</h2>
+                        <h2>Noticed multiple failed login attempts to your account {{email}} from a device. And for security purposes your account has been locked for next 10 minutes.</h2>
                         <p><strong>Address: {{ipAddress}}</strong></p>
                         <p><strong>User Agent: {{useragent}}</strong></p>
                         <!-- Action -->
-                        <p><strong>If you believe that this sign-in is suspicious</strong>, please <a href="https://blog.isharankumar.com/reset-password">reset your password</a> immediately.</p>
+                        <p><strong>If you believe that this sign-in attempts is suspicious</strong>, please <a href="https://blog.isharankumar.com/reset-password">reset your password</a> immediately.</p>
                         <p><a href="mailto:email@isharankumar.com">Contact me</a> if you have questions.</p>
                         <p>Sincerly, <br>
                             Sharan Kumar <br>
