@@ -54,7 +54,7 @@ export const Register = async (req, res, next) => {
 
         return res.status(200).json({
             success: true,
-            message: 'Registration successful🥳'
+            message: 'Registration successful'
         })
 
     } catch (error) {

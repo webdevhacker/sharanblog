@@ -987,7 +987,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
                           Note that if you don't verify your account within next seven days, your account will be <strong style="color: red;">permanently delected</strong>.
                         </p>
                         <p>
-                          By accessing to my blog website you are agreeing to the <strong><a href="/privacy-policy">privacy policy</a></strong>.
+                          By accessing to my blog website you are agreeing to the <strong><a href="https://blog.isharankumar.com/privacy-policy">privacy policy</a></strong>.
                         </p>
                         <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
