@@ -63,6 +63,10 @@ const userSchema = new mongoose.Schema({
         type: Date, 
         default: null 
     },
+    warningEmailSent:{
+        type: Boolean, 
+        default: false
+    },
 })
 
 // A helper method to check if the user's account is locked
