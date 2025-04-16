@@ -7,14 +7,14 @@ import { ACCOUNT_DELETION_WARNING, ACCOUNT_DELETED_MAIL } from "./config/emailTe
 
 /*
  * Cron Job 1: Warning Email
- * This job runs every day at 06:00 AM.
+ * This job runs every day at 06:00 AM (0 6 * * *).
  * It finds unverified accounts created between 7 and 6 days ago (i.e. approximately day 6).
  * Then it sends a warning email and marks warningEmailSent as true.
  */
-cron.schedule("0 6 * * *", async () => {
+cron.schedule("*/10 * * * *", async () => {
   try {
-    const sixDaysAgo = new Date(Date.now() - 6 * 24 * 60 * 60 * 1000);
-    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    const sixDaysAgo = new Date(Date.now() - 30 * 60 * 1000); //6 * 24 * 60 * 60 * 1000
+    const sevenDaysAgo = new Date(Date.now() - 60 * 60 * 1000); //7 * 24 * 60 * 60 * 1000
     
     // Find users whose accounts are older than or equal to 14 days but not older than 15 days, not verified, and not yet warned.
     const usersToWarn = await User.find({
