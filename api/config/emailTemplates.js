@@ -4058,7 +4058,7 @@ export const ACCOUNT_DELETED_MAIL =`
                     <td class="content-cell">
                       <div class="f-fallback">
                         <h1>Dear {{name}},</h1>
-                        <h2>Your unverified account with email id {{email}}, created on {{date_join}}, has been permanently deleted from our system as it was not verified within 07 days of joining date.</h2>
+                        <h2>Your unverified account with email id {{email}}, created on {{date_join}}, has been permanently deleted from our system as it was not verified within 07 days of creaction date.</h2>
                         <!-- Action -->
                         <p><strong>If you believe this was an error or wish to create a new account, please visit <a href="https://blog.isharankumar.com/sign-up">sign-up</a> page.</strong><br /> 
                         </p>
